@@ -2,11 +2,10 @@
 
 {% block content %}
     <p>login template</p>
-{% endblock %}
 
-{% block scripts %}
-<script>
-   var words = {{ pw | tojson}};
-   console.log(words);
-</script>
+    <div class="container">
+    {% for password in pw %}
+        {{ password }}
+    {% endfor %}
+    </div>
 {% endblock %}
