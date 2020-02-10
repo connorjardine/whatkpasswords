@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+    <p>login template</p>
+{% endblock %}
+
+{% block scripts %}
+<script>
+   var words = {{ pw | tojson}};
+   console.log(words);
+</script>
+{% endblock %}
