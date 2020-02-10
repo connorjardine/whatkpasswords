@@ -1,11 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <p>login template</p>
-
     <div class="container">
     {% for password in pw %}
-        {{ password }}
-    {% endfor %}
+    	{% if loop.index0 % 3 == 0 %}
+  		<div class="row">
+  		{% endif %}
+    		<div class="col">
+    			<button class="btn btn-primary">{{ password }}</button>
+    		</div>
+  		{% if loop.index0 % 3 == 2 or loop.last %}
+		</div>
+        {% endif %}
+   		{% endfor %}
     </div>
 {% endblock %}
