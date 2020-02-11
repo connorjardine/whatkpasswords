@@ -7,8 +7,11 @@ login = Blueprint('login', __name__, template_folder='templates')
 
 @login.route('/')
 def login_blueprint():
-    #TODO: get this data from user registration
-    passwords = ['cat', 'dog', 'house', 'boat', 'golf', 'mike', 'hotel', 'sierra', 'tango', 'blue']
+    file = open('static/simple_storage.txt', 'r')
+    passwords = file.read().strip(' ')
+    passwords = passwords.split()
+    passwords = [i.strip(",") for i in passwords]
+    passwords = [i.strip("'") for i in passwords]
     random.shuffle(passwords)
     return render_template('login.html', pw=passwords)
 
@@ -16,8 +19,11 @@ def login_blueprint():
 @login.route('/submit_login', methods=["GET", "POST"])
 def submit_user_login():
     if request.method == 'POST':
-        #TODO: get this data from user registration
-        correct_pw = ['cat', 'dog', 'house']
+        file = open('static/passwords.txt', 'r')
+        passwords = file.read().strip(' ')
+        passwords = passwords.split()
+        passwords = [i.strip(",") for i in passwords]
+        correct_pw = [i.strip("'") for i in passwords]
         a = request.form['code_zero']
         b = request.form['code_one']
         c = request.form['code_two']
