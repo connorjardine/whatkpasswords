@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, request
-import random
+from flask import Blueprint, render_template, request, url_for
+
+from .blueprint_services.word_colours import *
 
 
 login = Blueprint('login', __name__, template_folder='templates')
@@ -28,6 +29,6 @@ def submit_user_login():
         b = request.form['code_one']
         c = request.form['code_two']
         if a == correct_pw[0] and b == correct_pw[1] and c == correct_pw[2]:
-            return "True"
+            return url_for('authenticated.authenticated_blueprint')
         else:
             return "False"

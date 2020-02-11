@@ -16,8 +16,8 @@ $("button").click(function() {
                 code_two: codes_array[2]
             },
             success: function (result) {
-                if (result === "True") {
-                    window.location.href = '/authenticated/auth';
+                if (result !== "False") {
+                    window.location.href = result;
                 }
                 else {
                     iter = 0;

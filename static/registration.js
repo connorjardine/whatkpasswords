@@ -7,15 +7,17 @@ $("button").click(function() {
     iter += 1;
     console.log(codes_array);
     if( iter === 3) {
-        console.log(iter);
         if(first_input === undefined || first_input.length === 0) {
+            console.log("trigger");
+            $("#reentry-alert").css({"display": "inline-block"});
+                    setTimeout(function() {
+                        $("#reentry-alert").css({"display": "none"});
+                    }, 2000);
             first_input = codes_array;
             codes_array = [];
             iter = 0;
         }
         else{
-            console.log(codes_array.toString());
-            console.log(first_input.toString());
             if(codes_array.toString() === first_input.toString()) {
                 $.ajax({
                     url: $SCRIPT_ROOT + '/submit_registration',
@@ -32,6 +34,10 @@ $("button").click(function() {
                 });
             }
             else{
+                $("#incorrect-alert").css({"display": "inline-block"});
+                    setTimeout(function() {
+                        $("#incorrect-alert").css({"display": "none"});
+                    }, 1000);
                 console.log("show error message and clear variables to start again.");
                 iter = 0;
                 codes_array = [];

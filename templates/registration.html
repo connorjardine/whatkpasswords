@@ -7,12 +7,26 @@
 				Please select your passwords in the correct order from the grid below.
 			</p>
 		</div>
+		<div class="row">
+			<p>
+				The chosen passwords need to be selected twice.
+			</p>
+		</div>
     </div>
-    <div class="container" id='incorrectPassword' style="display: none">
+    <div class="container" id='incorrect-alert' style="display: none">
         <div class="row">
             <div class="col">
                 <div class="alert alert-danger" role="alert">
-                  Incorrect Password!!!
+                  The passwords did not match.
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="container" id='reentry-alert' style="display: none">
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-primary" role="alert">
+                  Please re-enter your password.
                 </div>
             </div>
         </div>
