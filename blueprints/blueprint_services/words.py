@@ -1,7 +1,9 @@
-from random_word import RandomWords
-
-r = RandomWords()
+import random
 
 def get_words(num_limit=10):
-    words = r.get_random_words(hasDictionaryDef="true", includePartOfSpeech="verb", minDictionaryCount=1, minLength=3, maxLength=6, limit=10)
+    file = open('static/words_innit.txt', 'r')
+    words = file.read().splitlines()
+    words = random.sample(words, num_limit)
     return words
+
+
