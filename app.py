@@ -10,5 +10,6 @@ app.register_blueprint(login)
 app.register_blueprint(authenticated)
 app.register_blueprint(registration)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    app.debug = True
     app.run()

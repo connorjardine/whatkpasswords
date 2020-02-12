@@ -10,10 +10,12 @@ login = Blueprint('login', __name__, template_folder='templates')
 def login_blueprint():
     file = open('static/simple_storage.txt', 'r')
     passwords = file.read().strip(' ')
+    file.close()
     passwords = passwords.split()
     passwords = [i.strip(",") for i in passwords]
     passwords = [i.strip("'") for i in passwords]
     random.shuffle(passwords)
+    passwords = colour_words(passwords)
     return render_template('login.html', pw=passwords)
 
 
@@ -22,6 +24,7 @@ def submit_user_login():
     if request.method == 'POST':
         file = open('static/passwords.txt', 'r')
         passwords = file.read().strip(' ')
+        file.close()
         passwords = passwords.split()
         passwords = [i.strip(",") for i in passwords]
         correct_pw = [i.strip("'") for i in passwords]

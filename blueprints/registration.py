@@ -11,6 +11,7 @@ def registration_blueprint():
     file = open('static/simple_storage.txt', 'w')
     words = get_words()
     file.write(str(words).strip('[]'))
+    file.close()
     return render_template('registration.html', words=words)
 
 
@@ -22,4 +23,5 @@ def submit_user_registration():
         c = request.form['code_two']
         file = open('static/passwords.txt', 'w')
         file.write(str([a, b, c]).strip('[]'))
+        file.close()
     return url_for('login.login_blueprint')
